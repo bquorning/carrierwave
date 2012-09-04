@@ -266,4 +266,3 @@ module CarrierWave
     end # Matchers
   end # Test
 end # CarrierWave
-

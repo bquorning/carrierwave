@@ -252,7 +252,7 @@ module CarrierWave
     # A hash of assignments to be evaluated in the block given to the RMagick write call.
     #
     # An example:
-    # 
+    #
     #      manipulate! do |img, index, options|
     #        options[:write] = {
     #          :quality => 50,
@@ -261,13 +261,13 @@ module CarrierWave
     #        img
     #      end
     #
-    # This will translate to the following RMagick::Image#write call: 
-    # 
+    # This will translate to the following RMagick::Image#write call:
+    #
     #     image.write do |img|
     #       self.quality = 50
     #       self.depth = 8
     #     end
-    #   
+    #
     # ==== :read
     # A hash of assignments to be given to the RMagick read call.
     #
@@ -276,7 +276,7 @@ module CarrierWave
     #     manipulate! :read => { :density => 300 }
     #
     # ==== :format
-    # Specify the output format. If unset, the filename extension is used to determine the format. 
+    # Specify the output format. If unset, the filename extension is used to determine the format.
     #
     # === Raises
     #

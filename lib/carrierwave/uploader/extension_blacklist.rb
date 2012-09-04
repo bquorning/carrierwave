@@ -16,7 +16,7 @@ module CarrierWave
       # the Regexp expression, also case insensitive.
       #
       # === Returns
-      
+      #
       # [NilClass, Array[String,Regexp]] a black list of extensions which are prohibited to be uploaded
       #
       # === Examples
@@ -31,7 +31,7 @@ module CarrierWave
       #       [/swf/, 'tiff']
       #     end
       #
- 
+
       def extension_black_list; end
 
     private

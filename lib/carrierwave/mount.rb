@@ -342,7 +342,7 @@ module CarrierWave
         @integrity_error = nil
 
         @remote_url = url
-        
+
         uploader.download!(url)
 
       rescue CarrierWave::DownloadError => e

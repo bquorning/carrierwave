@@ -82,7 +82,7 @@ describe CarrierWave::Uploader do
       @uploader.should_not_receive(:fancy)
       @uploader.process!("test.jpg")
     end
-    
+
     context "when using RMagick" do
       before do
         def @uploader.cover
@@ -95,7 +95,7 @@ describe CarrierWave::Uploader do
       after do
         @uploader.instance_eval { undef cover }
       end
-      
+
       context "with a multi-page PDF" do
         before do
           @uploader.cache! File.open(file_path("multi_page.pdf"))

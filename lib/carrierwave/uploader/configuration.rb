@@ -139,4 +139,3 @@ module CarrierWave
     end
   end
 end
-

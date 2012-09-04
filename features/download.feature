@@ -17,4 +17,3 @@ Feature: downloading files
     And I store the file
     Then there should be a file at 'public/uploads/testfile.txt'
     And the file at 'public/uploads/testfile.txt' should contain 'S3 Remote File'
-

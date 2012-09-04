@@ -13,7 +13,7 @@ describe CarrierWave::Uploader do
   end
 
   describe '#cache!' do
-    
+
     before do
       CarrierWave.stub!(:generate_cache_id).and_return('20071201-1234-345-2255')
     end
