@@ -41,7 +41,11 @@ end
           end
 
           it "should have a path" do
-            @fog_file.path.should == 'uploads/test.jpg'
+            if fog_credentials[:provider] == 'Local'
+              @fog_file.path.should == "#{fog_credentials[:local_root]}/#{CARRIERWAVE_DIRECTORY}/uploads/test.jpg"
+            else
+              @fog_file.path.should == 'uploads/test.jpg'
+            end
           end
 
           it "should have a content_type" do
@@ -134,7 +138,11 @@ end
           end
 
           it "should have a path" do
-            @fog_file.path.should == 'uploads/test.jpg'
+            if fog_credentials[:provider] == 'Local'
+              @fog_file.path.should == "#{fog_credentials[:local_root]}/#{CARRIERWAVE_DIRECTORY}/uploads/test.jpg"
+            else
+              @fog_file.path.should == 'uploads/test.jpg'
+            end
           end
 
           it "should have a public url" do

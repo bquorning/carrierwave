@@ -116,7 +116,18 @@ module CarrierWave
         #
         # [String] a path to file
         #
-        attr_reader :path
+        def path
+          case @uploader.fog_credentials[:provider]
+          when 'Local'
+            ::File.join(*[
+              @uploader.fog_credentials[:local_root],
+              @uploader.fog_directory,
+              @path
+            ].compact)
+          else
+            @path
+          end
+        end
 
         ##
         # Return all attributes from file
