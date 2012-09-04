@@ -38,7 +38,7 @@ module CarrierWave
     #
     def original_filename
       return @original_filename if @original_filename
-      if @file and @file.respond_to?(:original_filename)
+      if @file && @file.respond_to?(:original_filename)
         @file.original_filename
       elsif path
         File.basename(path)
@@ -111,7 +111,7 @@ module CarrierWave
       unless @file.blank?
         if is_path?
           File.expand_path(@file)
-        elsif @file.respond_to?(:path) and not @file.path.blank?
+        elsif @file.respond_to?(:path) && !@file.path.blank?
           File.expand_path(@file.path)
         end
       end
@@ -132,7 +132,7 @@ module CarrierWave
     # [Boolean] whether the file is valid and has a non-zero size
     #
     def empty?
-      @file.nil? || self.size.nil? || (self.size.zero? && ! self.exists?)
+      @file.nil? || self.size.nil? || (self.size.zero? && !self.exists?)
     end
 
     ##
@@ -240,7 +240,7 @@ module CarrierWave
     #
     def content_type
       return @content_type if @content_type
-      @file.content_type.to_s.chomp if @file.respond_to?(:content_type) and @file.content_type
+      @file.content_type.to_s.chomp if @file.respond_to?(:content_type) && @file.content_type
     end
 
     ##

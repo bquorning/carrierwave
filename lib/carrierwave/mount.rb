@@ -310,7 +310,7 @@ module CarrierWave
       def uploader
         @uploader ||= record.class.uploaders[column].new(record, column)
 
-        if @uploader.blank? and not identifier.blank?
+        if @uploader.blank? && !identifier.blank?
           @uploader.retrieve_from_store!(identifier)
         end
         return @uploader
@@ -375,7 +375,7 @@ module CarrierWave
       end
 
       def remove?
-        !remove.blank? and remove !~ /\A0|false$\z/
+        !remove.blank? && remove !~ /\A0|false$\z/
       end
 
       def remove!
