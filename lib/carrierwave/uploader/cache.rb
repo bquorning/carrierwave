@@ -162,12 +162,16 @@ module CarrierWave
       alias_method :full_original_filename, :original_filename
 
       def cache_id=(cache_id)
-        raise CarrierWave::InvalidParameter, "invalid cache id" unless cache_id =~ /\A[\d]{8}\-[\d]{4}\-[\d]+\-[\d]{4}\z/
+        unless cache_id =~ /\A[\d]{8}\-[\d]{4}\-[\d]+\-[\d]{4}\z/
+          raise CarrierWave::InvalidParameter, "invalid cache id"
+        end
         @cache_id = cache_id
       end
 
       def original_filename=(filename)
-        raise CarrierWave::InvalidParameter, "invalid filename" if filename =~ CarrierWave::SanitizedFile.sanitize_regexp
+        if filename =~ CarrierWave::SanitizedFile.sanitize_regexp
+          raise CarrierWave::InvalidParameter, "invalid filename"
+        end
         @original_filename = filename
       end
 

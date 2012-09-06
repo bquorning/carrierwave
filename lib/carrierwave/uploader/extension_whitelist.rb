@@ -40,7 +40,11 @@ module CarrierWave
       def check_whitelist!(new_file)
         extension = new_file.extension.to_s
         if extension_white_list && !extension_white_list.detect { |item| extension =~ /\A#{item}\z/i }
-          raise CarrierWave::IntegrityError, I18n.translate(:"errors.messages.extension_white_list_error", :extension => new_file.extension.inspect, :allowed_types => extension_white_list.join(", "))
+          message = I18n.translate(:"errors.messages.extension_white_list_error",
+            :extension => new_file.extension.inspect,
+            :allowed_types => extension_white_list.join(", ")
+          )
+          raise CarrierWave::IntegrityError, message
         end
       end
 

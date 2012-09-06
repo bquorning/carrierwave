@@ -80,7 +80,13 @@ module CarrierWave
         if enable_processing
           self.class.processors.each do |method, args, condition|
             if(condition)
-              next if !(condition.respond_to?(:call) ? condition.call(self, :args => args, :method => method, :file => new_file) : self.send(condition, new_file))
+              if condition.respond_to?(:call)
+                success = condition.call(self, :args => args, :method => method, :file => new_file)
+              else
+                success = self.send(condition, new_file)
+              end
+
+              next unless success
             end
             self.send(method, *args)
           end

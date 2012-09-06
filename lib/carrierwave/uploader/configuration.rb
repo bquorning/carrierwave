@@ -82,7 +82,11 @@ module CarrierWave
               return @#{name} if self.object_id == #{self.object_id} || defined?(@#{name})
               name = superclass.#{name}
               return nil if name.nil? && !instance_variable_defined?("@#{name}")
-              @#{name} = name && !name.is_a?(Module) && !name.is_a?(Symbol) && !name.is_a?(Numeric) && !name.is_a?(TrueClass) && !name.is_a?(FalseClass) ? name.dup : name
+              if name.is_a?(Module) || name.is_a?(Symbol) || name.is_a?(Numeric) || name.is_a?(TrueClass) || name.is_a?(FalseClass)
+                @#{name} = name
+              else
+                @#{name} = name.dup
+              end
             end
 
             def self.#{name}=(value)
